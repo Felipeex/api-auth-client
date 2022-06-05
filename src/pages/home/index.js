@@ -10,7 +10,10 @@ export default function Home() {
     return (
         <div className="container">
             <form>
-                { !signup ? <SignIn setSignup={setSignup}/> : ''}
+                { !signup ?
+                    <SignIn setSignup={setSignup}/> :
+                    <SignUp setSignup={setSignup}/>
+                }
             </form>
         </div>
     )
