@@ -6,11 +6,13 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Axios
 - React-toastify
 - Phosphor
-- Js-cookie
+- JsCookie
 
 ## 💻 Projeto
 
 Consumindo Api de login https://github.com/Felipeex/api-auth
+
+Esse projeto tem como intuito, apenas demostrar minha api de Login. Não é nada Escalável.
 
 Instalar pacotes.
 

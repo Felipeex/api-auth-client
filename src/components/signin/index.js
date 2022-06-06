@@ -1,23 +1,21 @@
 import { useState } from "react"
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 import api from "../../services/api"
 import Cookies from 'js-cookie'
 import Loading from "../Loading"
 
-export default function SignIn({ setSignup, setToken }) {
+export default function SignIn({ setSignup, setToken, Notify }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [IsSubmitRequest, setIsSubmitRequest] = useState(false)
 
-    async function Submit() {
+    async function SubmitRequest() {
         if(!email)
-        return toast.warn('Preecha o seu email!', { position: "top-center" })
+        return Notify('warn', 'Preecha seu email.')
 
         if(!password)
-        return toast.warn('Preecha a sua senha!', { position: "top-center" })
+        return Notify('warn', 'Preecha sua senha.')
 
         try {
             setIsSubmitRequest(true)
@@ -31,21 +29,20 @@ export default function SignIn({ setSignup, setToken }) {
             setIsSubmitRequest(false)
 
             if(err.response.status === 0)
-            return toast.error('Ocorreu um erro!', { position: "top-center" })
-            return toast.warn(err.response.data.error, { position: "top-center" })
+            return Notify('error', 'Ocorreu um erro.')
+            return Notify('error', err.response.data.error)
         }
     }
 
     return (
         <>
-            <ToastContainer />
             <h1>Login</h1>
                 
             <input type="email" placeholder="Seu email" onChange={(e) => setEmail(e.target.value)}></input>
             <input type="password" placeholder="Sua senha" onChange={(e) => setPassword(e.target.value)}></input>
         
             <button 
-            onClick={(e) => Submit(e.preventDefault())}
+            onClick={(e) => SubmitRequest(e.preventDefault())}
             disabled={IsSubmitRequest}
             >{IsSubmitRequest ? <Loading /> : 'Entrar'}</button>
         
