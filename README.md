@@ -5,6 +5,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - React
 - Axios
 - React-toastify
+- Phosphor
+- Js-cookie
 
 ## 💻 Projeto
 

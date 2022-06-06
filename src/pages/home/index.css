@@ -65,7 +65,7 @@ body {
 
     padding: 1.5rem;
 
-    text-align: center;
+    word-wrap: break-word;
 }
 
 form h1 {
@@ -73,6 +73,11 @@ form h1 {
     font-weight: 700;
 
     padding: 0.5rem;
+    text-align: center;
+}
+
+form input:focus {
+    border: 1px solid #5b5bff;
 }
 
 form input, button {
@@ -89,7 +94,7 @@ form input, button {
     color: #fff;
     font-weight: 600;
 
-    margin: 10px 0;
+    margin: 10px 0; 
 }
 
 form button {
@@ -106,9 +111,36 @@ form h4 {
     font-family: 'Courier New', Arial;
     color: #fff;
     font-weight: 500;
+    text-align: center;
 }
 
 form h4 span {
     cursor: pointer;
     color: #5b5bff;
+}
+
+form button:disabled {
+    opacity: 50%;
+}
+
+form button:disabled:hover {
+    background: #5b5bff;
+}
+
+form .Loading {
+    animation: spin 1s linear infinite;
+}
+
+form h1 span {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 10px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
