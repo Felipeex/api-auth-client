@@ -1,10 +1,9 @@
-import { useState } from "react"
-
-import api from "../../services/api"
+/* imports */
 import Loading from "../Loading"
+import { useState } from "react"
+import { SignUpRequest } from "../../services/api/utils"
 
 export default function SignIn({ setSignup, Notify }) {
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
@@ -23,21 +22,7 @@ export default function SignIn({ setSignup, Notify }) {
         if(password !== repeatPassword)
         return Notify('warn', 'Suas senhas não são iguais.')
 
-        try {
-            setIsSubmitRequest(true)
-
-            const login = await api.post('/signup', { email, password })
-            Notify('success', login.data.message)
-            setSignup(false)
-            
-            setIsSubmitRequest(false)
-        } catch (err) {
-            setIsSubmitRequest(false)
-
-            if(err.response.status === 0)
-            return Notify('error', 'Ocorreu um erro.')
-            return Notify('error', err.response.data.error)
-        }
+        await SignUpRequest(setIsSubmitRequest, setSignup, email, password)
     }
 
     return (

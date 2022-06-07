@@ -1,44 +1,36 @@
+
+/* imports */
 import Cookie from "js-cookie"
 import { useState, useEffect } from "react"
+import { Notify } from "../../services/api/utils"
+
+/* notify */
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 /* components */
 import Login from "../../components/Login"
 import SignIn from "../../components/SignIn"
 import SignUp from "../../components/SignUp"
 
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-
 /* styles */
 import "./index.css"
 
 export default function Home() {
+    const CookieToken = Cookie.get('token')
     const [signup, setSignup] = useState(false)
     const [token, setToken] = useState(false)
 
     useEffect(() => {
-        const token = Cookie.get('token')
-        if(token)
-        return setToken(token)
-    }, [])
-
-    function Notify(type, desc) {
-        if (type === 'warn') {
-            toast.warn(desc, { position: "top-center" })
-        } else if(type === 'error'){
-            toast.error(desc, { position: "top-center" })
-        } else if(type === 'success'){
-            toast.success(desc, { position: "top-center" })
-        } else {
-            toast(desc, { position: "top-center" })
-        }
-    }
+        if(CookieToken)
+        return setToken(CookieToken)
+    }, [CookieToken])
 
     return (
         <div className="container">
             <form>
                 <ToastContainer />
-                {   !token ? 
+                {   !token ?
                     !signup ?
                     <SignIn 
                     setSignup={setSignup} 

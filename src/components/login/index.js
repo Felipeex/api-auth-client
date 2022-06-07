@@ -1,3 +1,4 @@
+/* imports */
 import Cookies from 'js-cookie'
 
 export default function Login({ token, setToken }) {

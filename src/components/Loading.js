@@ -1,3 +1,4 @@
+/* imports */
 import { CircleNotch } from "phosphor-react"
 
 export default function Loading() {
